@@ -1,12 +1,18 @@
-Name:           glipper
-Version:        0.95.1
-Release:        %mkrel 1
-Summary:        Glipper is a clipboardmanager for GNOME
+%define name glipper
+%define version 0.95.1
+%define release %mkrel 2
+
+Name:           %{name}
+Version:        %{version}
+Release:        %{release}
+Summary:        Glipper is a clipboard manager for GNOME
 
 Group:          Graphical desktop/GNOME
 License:        LGPL
 URL:            http://glipper.sourceforge.net/
-Source0:        %name-%version.tar.bz2 
+Source0:        %name-%version.tar.bz2
+#75x76 version of icon taken from homepage
+Source1:	glipper-logo.png
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:  desktop-file-utils
@@ -16,41 +22,39 @@ BuildRequires:  gnome-doc-utils
 BuildRequires:  glib2-devel
 BuildRequires:  libgnome2-devel
 BuildRequires:  libglade2.0-devel
-BuildRequires:  gtk2-devel
+BuildRequires:	ImageMagick
 
 %description
 
-Glipper is a clipboardmanager for GNOME (and other WMs), it 
-maintains a history of text copied to the clipboard from which 
-you can choose. You can see this as a GNOME counterpart to 
-KDE's Klipper.
-
-%files -f %{name}.lang
-%defattr(-,root,root,-)
-%{_bindir}/glipper
-%{_datadir}/applications/glipper.desktop
-%{_datadir}/glipper/glipper-properties.glade
-%{_datadir}/gnome/help/glipper/C/glipper.xml
-%{_datadir}/gnome/help/glipper/de/glipper.xml
-%{_datadir}/gnome/help/glipper/fr/glipper.xml
-%{_datadir}/pixmaps/glipper.png
+Glipper is a clipboard manager for GNOME. It maintains a history 
+of text copied to the clipboard from which you can choose. You 
+can see this as a GNOME counterpart to KDE's Klipper.
 
 #--------------------------------------------------------------------
 
 %prep
 %setup -q
 
-
 %build
 %configure 
 %make 
-
 
 %install
 rm -rf %buildroot
 make install DESTDIR=%buildroot
 %find_lang %name
 
+# fd.o icons
+mkdir -p %buildroot%{_iconsdir}/hicolor/{64x64,48x48,32x32,16x16}/apps
+convert -scale 64 %SOURCE1 %buildroot%_iconsdir/hicolor/64x64/apps/%name.png
+convert -scale 48 %SOURCE1 %buildroot%_iconsdir/hicolor/48x48/apps/%name.png
+convert -scale 32 %SOURCE1 %buildroot%_iconsdir/hicolor/32x32/apps/%name.png
+convert -scale 16 %SOURCE1 %buildroot%_iconsdir/hicolor/16x16/apps/%name.png
+# MDV icons
+mkdir -p %buildroot{%_liconsdir,%_miconsdir}
+convert -scale 48 %SOURCE1 %buildroot%_liconsdir/%name.png
+convert -scale 32 %SOURCE1 %buildroot%_iconsdir/%name.png
+convert -scale 16 %SOURCE1 %buildroot%_miconsdir/%name.png
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -58,8 +62,29 @@ desktop-file-install --vendor="" \
   --add-category="Office" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
+sed -e 's/%{name}.png/%{name}/' %buildroot%{_datadir}/applications/%{name}.desktop > %buildroot%{_datadir}/applications/%{name}.new && \
+mv -f %buildroot%{_datadir}/applications/%{name}.new %buildroot%{_datadir}/applications/%{name}.desktop
+
+%post
+%update_icon_cache hicolor
+%update_menus
+%postun
+%clean_icon_cache hicolor
+%clean_menus
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
+%files -f %name.lang
+%defattr(-,root,root)
+%doc README AUTHORS ChangeLog TODO
+%_bindir/%{name}
+%_datadir/applications/%{name}.desktop
+%_datadir/pixmaps/%{name}.png
+%dir %_datadir/gnome/help/glipper
+%lang(fr) %_datadir/gnome/help/glipper/fr/glipper.xml
+%lang(de) %_datadir/gnome/help/glipper/de/glipper.xml
+%_datadir/gnome/help/glipper/C/glipper.xml
+%_iconsdir/*
+%_liconsdir/*
+%_miconsdir/*
