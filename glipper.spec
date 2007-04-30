@@ -77,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %name.lang
 %defattr(-,root,root)
-%doc README AUTHORS ChangeLog TODO
+%doc README AUTHORS ChangeLog
 %_bindir/%{name}
 %_datadir/applications/%{name}.desktop
 %_datadir/pixmaps/%{name}.png
