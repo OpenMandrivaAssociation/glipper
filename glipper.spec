@@ -81,10 +81,12 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/%{name}
 %_datadir/applications/%{name}.desktop
 %_datadir/pixmaps/%{name}.png
-%dir %_datadir/gnome/help/glipper
-%lang(fr) %_datadir/gnome/help/glipper/fr/glipper.xml
-%lang(de) %_datadir/gnome/help/glipper/de/glipper.xml
-%_datadir/gnome/help/glipper/C/glipper.xml
+%dir %_datadir/gnome/help/%{name}
+%lang(fr) %_datadir/gnome/help/%{name}/fr/glipper.xml
+%lang(de) %_datadir/gnome/help/%{name}/de/glipper.xml
+%_datadir/gnome/help/%{name}/C/%{name}.xml
+%dir %_datadir/%{name}
+%_datadir/%{name}/%{name}-properties.glade
 %_iconsdir/*
 %_liconsdir/*
 %_miconsdir/*
