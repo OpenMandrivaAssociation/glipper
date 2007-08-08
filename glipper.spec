@@ -24,6 +24,7 @@ BuildRequires:  libgnome2-devel
 BuildRequires:  libglade2.0-devel
 BuildRequires:	ImageMagick
 BuildRequires:	gnome-python >= 2.10
+BuildRequires:	pygtk2.0-devel
 BuildRequires:	gnome-python-gconf gnome-python-gnomevfs
 
 %description
@@ -38,12 +39,12 @@ can see this as a GNOME counterpart to KDE's Klipper.
 %setup -q
 
 %build
-%configure 
+%configure2_5x 
 %make 
 
 %install
 rm -rf %buildroot
-make install DESTDIR=%buildroot
+%makeinstall_std
 %find_lang %name
 
 # fd.o icons
