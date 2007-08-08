@@ -38,7 +38,7 @@ can see this as a GNOME counterpart to KDE's Klipper.
 %setup -q
 
 %build
-%configure2_5x 
+%configure2_5x --disable-schemas-install
 %make 
 
 %install
