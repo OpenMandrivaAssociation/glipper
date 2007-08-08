@@ -25,7 +25,7 @@ BuildRequires:  libglade2.0-devel
 BuildRequires:	ImageMagick
 BuildRequires:	gnome-python >= 2.10
 BuildRequires:	pygtk2.0-devel
-BuildRequires:	gnome-python-gconf gnome-python-gnomevfs
+BuildRequires:	gnome-python-gconf gnome-python-gnomevfs gnome-python-applet
 
 %description
 
