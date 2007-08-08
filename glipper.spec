@@ -1,6 +1,6 @@
 %define name glipper
-%define version 0.95.1
-%define release %mkrel 2
+%define version 1.0
+%define release %mkrel 1
 
 Name:           %{name}
 Version:        %{version}
@@ -23,6 +23,8 @@ BuildRequires:  glib2-devel
 BuildRequires:  libgnome2-devel
 BuildRequires:  libglade2.0-devel
 BuildRequires:	ImageMagick
+BuildRequires:	gnome-python >= 2.10
+BuildRequires:	gnome-python-gconf gnome-python-gnomevfs
 
 %description
 
