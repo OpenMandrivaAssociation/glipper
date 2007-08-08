@@ -26,6 +26,8 @@ BuildRequires:	gnome-python >= 2.10
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gnome-python-gconf gnome-python-gnomevfs gnome-python-applet
 
+Requires(post,preun): GConf2
+
 %description
 
 Glipper is a clipboard manager for GNOME. It maintains a history 
@@ -67,6 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_libdir}/%{name}
 %{_libdir}/bonobo/servers/*
+%{_libdir}/pkgconfig/*.pc
 %dir %_datadir/gnome/help/%{name}
 %lang(fr) %_datadir/gnome/help/%{name}/fr/glipper.xml
 %lang(de) %_datadir/gnome/help/%{name}/de/glipper.xml
