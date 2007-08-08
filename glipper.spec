@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %name.lang
 %defattr(-,root,root)
 %doc README AUTHORS ChangeLog
-%{_sysconfdir}/gconf/schemas/*.schema
+%{_sysconfdir}/gconf/schemas/*
 %{py_platsitedir}/%{name}
 %{_datadir}/%{name}
 %{_libdir}/%{name}
