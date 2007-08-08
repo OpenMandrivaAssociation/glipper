@@ -11,8 +11,6 @@ Group:          Graphical desktop/GNOME
 License:        LGPL
 URL:            http://glipper.sourceforge.net/
 Source0:        %name-%version.tar.bz2
-#75x76 version of icon taken from homepage
-Source1:	glipper-logo.png
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:  perl(XML::Parser)
@@ -65,7 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc README AUTHORS ChangeLog
 %{_sysconfdir}/gconf/schemas/*
-%{py_platsitedir}/%{name}
+%{py_sitedir}/%{name}
 %{_datadir}/%{name}
 %{_libdir}/%{name}
 %{_libdir}/bonobo/servers/*
