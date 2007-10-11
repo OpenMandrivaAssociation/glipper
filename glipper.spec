@@ -1,6 +1,6 @@
 %define name glipper
 %define version 1.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:           %{name}
 Version:        %{version}
@@ -48,10 +48,10 @@ rm -rf %buildroot
 
 %post
 %update_icon_cache hicolor
-%post_install_gconf_schemas glipper
+%{post_install_gconf_schemas glipper}
 
 %preun
-%preun_install_gconf_schemas glipper
+%{preun_uninstall_gconf_schemas glipper}
 
 %postun
 %clean_icon_cache hicolor
