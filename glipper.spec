@@ -11,7 +11,6 @@ Group:          Graphical desktop/GNOME
 License:        LGPL
 URL:            http://glipper.sourceforge.net/
 Source0:        %name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig
