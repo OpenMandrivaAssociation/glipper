@@ -27,7 +27,6 @@ BuildRequires:	gnome-python-gconf gnome-python-gnomevfs gnome-python-applet
 Requires(post,preun): GConf2
 
 %description
-
 Glipper is a clipboard manager for GNOME. It maintains a history 
 of text copied to the clipboard from which you can choose. You 
 can see this as a GNOME counterpart to KDE's Klipper.
