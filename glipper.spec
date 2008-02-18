@@ -5,7 +5,7 @@
 Name:           %{name}
 Version:        %{version}
 Release:        %{release}
-Summary:        Glipper is a clipboard manager for GNOME
+Summary:        Clipboard manager for GNOME
 
 Group:          Graphical desktop/GNOME
 License:        LGPL
