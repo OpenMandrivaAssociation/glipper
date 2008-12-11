@@ -19,7 +19,7 @@ BuildRequires:  gnome-doc-utils
 BuildRequires:  glib2-devel
 BuildRequires:  libgnome2-devel
 BuildRequires:  libglade2.0-devel
-BuildRequires:	ImageMagick
+BuildRequires:	imagemagick
 BuildRequires:	gnome-python >= 2.10, gnome-python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gnome-python-gconf gnome-python-gnomevfs gnome-python-applet
