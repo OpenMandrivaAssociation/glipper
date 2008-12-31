@@ -1,6 +1,6 @@
 %define name glipper
 %define version 1.0
-%define release %mkrel 5
+%define release %mkrel 6
 
 Name:           %{name}
 Version:        %{version}
@@ -8,7 +8,7 @@ Release:        %{release}
 Summary:        Clipboard manager for GNOME
 
 Group:          Graphical desktop/GNOME
-License:        LGPL
+License:        GPL+
 URL:            http://glipper.sourceforge.net/
 Source0:        %name-%version.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -20,11 +20,15 @@ BuildRequires:  glib2-devel
 BuildRequires:  libgnome2-devel
 BuildRequires:  libglade2.0-devel
 BuildRequires:	imagemagick
-BuildRequires:	gnome-python >= 2.10, gnome-python-devel
+%{py_requires -d}
+BuildRequires:	gnome-python >= 2.10
+BuildRequires:	gnome-python-devel
 BuildRequires:	pygtk2.0-devel
-BuildRequires:	gnome-python-gconf gnome-python-gnomevfs gnome-python-applet
+BuildRequires:	gnome-python-gconf
+BuildRequires:	gnome-python-gnomevfs
+BuildRequires:	gnome-python-applet
 
-Requires(post,preun): GConf2
+Requires(post,preun):	GConf2
 
 %description
 Glipper is a clipboard manager for GNOME. It maintains a history 
@@ -43,7 +47,7 @@ can see this as a GNOME counterpart to KDE's Klipper.
 %install
 rm -rf %buildroot
 %makeinstall_std
-%find_lang %name
+%find_lang %{name}
 
 %post
 %update_icon_cache hicolor
@@ -56,9 +60,9 @@ rm -rf %buildroot
 %clean_icon_cache hicolor
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
-%files -f %name.lang
+%files -f %{name}.lang
 %defattr(-,root,root)
 %doc README AUTHORS ChangeLog
 %{_sysconfdir}/gconf/schemas/*
