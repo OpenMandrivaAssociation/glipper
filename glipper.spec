@@ -1,6 +1,6 @@
 %define name glipper
 %define version 1.0
-%define release %mkrel 7
+%define release %mkrel 8
 
 Name:           %{name}
 Version:        %{version}
@@ -39,6 +39,10 @@ can see this as a GNOME counterpart to KDE's Klipper.
 
 %prep
 %setup -q
+# Don't break pkg-config with an invalid file
+echo "Name: %name" >> data/glipper.pc
+echo "Version: %version" >> data/glipper.pc
+echo "Description: Clipboard manager for GNOME" >> data/glipper.pc
 
 %build
 %configure2_5x --disable-schemas-install
