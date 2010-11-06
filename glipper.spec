@@ -1,6 +1,6 @@
 %define name glipper
 %define version 1.0
-%define release %mkrel 9
+%define release %mkrel 10
 
 Name:           %{name}
 Version:        %{version}
@@ -11,6 +11,7 @@ Group:          Graphical desktop/GNOME
 License:        GPL+
 URL:            http://glipper.sourceforge.net/
 Source0:        %name-%version.tar.bz2
+Patch0:		glipper-1.0-link.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires:  perl(XML::Parser)
@@ -20,15 +21,16 @@ BuildRequires:  glib2-devel
 BuildRequires:  libgnome2-devel
 BuildRequires:  libglade2.0-devel
 BuildRequires:	imagemagick
-%{py_requires -d}
 BuildRequires:	gnome-python >= 2.10
 BuildRequires:	gnome-python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	gnome-python-gconf
 BuildRequires:	gnome-python-gnomevfs
 BuildRequires:	gnome-python-applet
-
-Requires(post,preun):	GConf2
+Requires:	gnome-python
+Requires:	gnome-python-gconf
+Requires:	gnome-python-gnomevfs
+Requires:	gnome-python-applet
 
 %description
 Glipper is a clipboard manager for GNOME. It maintains a history 
@@ -39,6 +41,7 @@ can see this as a GNOME counterpart to KDE's Klipper.
 
 %prep
 %setup -q
+%patch0 -p1
 # Don't break pkg-config with an invalid file
 echo "Name: %name" >> data/glipper.pc
 echo "Version: %version" >> data/glipper.pc
