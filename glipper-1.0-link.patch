@@ -1,0 +1,44 @@
+--- glipper-1.0/glipper/keybinder/Makefile.am.link	2010-11-06 03:55:43.000000000 +0000
++++ glipper-1.0/glipper/keybinder/Makefile.am	2010-11-06 03:56:01.000000000 +0000
+@@ -3,7 +3,7 @@
+ _keybinderdir = $(pythondir)/glipper/keybinder
+ _keybinder_LTLIBRARIES = _keybinder.la
+ _keybinder_la_LDFLAGS = -module -avoid-version -export-symbols-regex init_keybinder
+-_keybinder_la_LIBADD = $(GLIPPER_LIBS)
++_keybinder_la_LIBADD = $(GLIPPER_LIBS) -lpython$(PYTHON_VERSION)
+ _keybinder_la_SOURCES = \
+ 	_keybindermodule.c \
+ 	eggaccelerators.c \
+--- glipper-1.0/glipper/keybinder/Makefile.in.link	2010-11-06 03:56:09.000000000 +0000
++++ glipper-1.0/glipper/keybinder/Makefile.in	2010-11-06 03:56:23.000000000 +0000
+@@ -263,7 +263,7 @@
+ _keybinderdir = $(pythondir)/glipper/keybinder
+ _keybinder_LTLIBRARIES = _keybinder.la
+ _keybinder_la_LDFLAGS = -module -avoid-version -export-symbols-regex init_keybinder
+-_keybinder_la_LIBADD = $(GLIPPER_LIBS)
++_keybinder_la_LIBADD = $(GLIPPER_LIBS) -lpython$(PYTHON_VERSION)
+ _keybinder_la_SOURCES = \
+ 	_keybindermodule.c \
+ 	eggaccelerators.c \
+--- glipper-1.0/glipper/osutils/Makefile.am.link	2010-11-06 03:54:45.000000000 +0000
++++ glipper-1.0/glipper/osutils/Makefile.am	2010-11-06 03:55:09.000000000 +0000
+@@ -3,7 +3,7 @@
+ _osutilsdir = $(pythondir)/glipper/osutils
+ _osutils_LTLIBRARIES = _osutils.la
+ _osutils_la_LDFLAGS = -module -avoid-version init_osutils
+-_osutils_la_LIBADD = $(GLIPPER_LIBS)
++_osutils_la_LIBADD = $(GLIPPER_LIBS) -lpython$(PYTHON_VERSION)
+ _osutils_la_SOURCES = \
+ 	_osutilsmodule.c
+ 
+--- glipper-1.0/glipper/osutils/Makefile.in.link	2010-11-06 03:55:15.000000000 +0000
++++ glipper-1.0/glipper/osutils/Makefile.in	2010-11-06 03:55:28.000000000 +0000
+@@ -260,7 +260,7 @@
+ _osutilsdir = $(pythondir)/glipper/osutils
+ _osutils_LTLIBRARIES = _osutils.la
+ _osutils_la_LDFLAGS = -module -avoid-version init_osutils
+-_osutils_la_LIBADD = $(GLIPPER_LIBS)
++_osutils_la_LIBADD = $(GLIPPER_LIBS) -lpython$(PYTHON_VERSION)
+ _osutils_la_SOURCES = \
+ 	_osutilsmodule.c
+ 
