@@ -9,7 +9,7 @@ Summary:        Clipboard manager for GNOME
 
 Group:          Graphical desktop/GNOME
 License:        GPL+
-URL:            http://glipper.sourceforge.net/
+URL:            https://glipper.sourceforge.net/
 Source0:        %name-%version.tar.bz2
 Patch0:		glipper-1.0-link.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
