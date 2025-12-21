@@ -14,6 +14,11 @@ Source0:        %name-%version.tar.bz2
 Patch0:		glipper-1.0-link.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig
 BuildRequires:  gnome-doc-utils
